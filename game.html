@@ -15,8 +15,9 @@
          guess = Number.parseInt(prompt('Jittery! Too much coffee. Less is best.'));
          count= count + 1;
     }
- alert("You used all your guesses! You lose.");
-
+ if(count===5){
+   alert("You used all your guesses! You lose.")
+};
 })()
 </script>
 
