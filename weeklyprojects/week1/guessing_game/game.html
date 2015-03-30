@@ -1,0 +1,18 @@
+<script>
+(function(){
+  var answer = Number.parseInt('18');
+
+  var guess = Number.parseInt(prompt('How many cups of coffee per week would keep me happy?'))
+
+  while(true)
+    if (guess=== answer){
+      alert('That\'s the perfect amount of coffee!')
+      break;
+    } else if(guess < answer){
+      guess = Number.parseInt(prompt('So tired! Not enough coffee! Add more.'))
+    }else if(guess> answer){
+      guess = Number.parseInt(prompt('Jittery! Too much coffee. Less is best.'))
+    }
+
+})()
+</script>
