@@ -2,17 +2,21 @@
 (function(){
   var answer = Number.parseInt('18');
 
-  var guess = Number.parseInt(prompt('How many cups of coffee per week would keep me happy?'))
-
-  while(true)
+  var guess = Number.parseInt(prompt('Can you guess how many cups of coffee per week it takes to keep me functional without getting jumpy? You have five chances.'));
+  var count=0;
+  while(count < 6)
     if (guess=== answer){
-      alert('That\'s the perfect amount of coffee!')
+        alert('That\'s the perfect amount of coffee!');
       break;
     } else if(guess < answer){
-      guess = Number.parseInt(prompt('So tired! Not enough coffee! Add more.'))
+         guess = Number.parseInt(prompt('So tired! Not enough coffee! Add more.'));
+         count = count + 1;
     }else if(guess> answer){
-      guess = Number.parseInt(prompt('Jittery! Too much coffee. Less is best.'))
+         guess = Number.parseInt(prompt('Jittery! Too much coffee. Less is best.'));
+         count= count + 1;
     }
+ alert("You used all your guesses! You lose.");
 
 })()
 </script>
+
