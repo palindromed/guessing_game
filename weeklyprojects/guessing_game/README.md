@@ -6,6 +6,8 @@ The game uses an array to create objects with the specified attributes.
 
 The user is first prompted for a number and the number determines the correct answer, so the answer can be one of 5 companions.
 
-The user then has 3 chances to guess the correct companion and is given a hint using an attribute of that compation for the second and third prompts.
+The user then has 3 chances to guess the correct companion and is given a hint using an attribute of that companion for the second and third prompts.
 
 If the user does not correctly guess the answer, they are given the correct name and the manner in which their journey with the doctor ended.
+
+
