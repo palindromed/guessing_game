@@ -1,31 +1,102 @@
+<!Doctype html>
+<html>
+<head>
+  <title>Guess the Doctor Who Companion</title>
+</head>
+<body>
+  <h2>Choose a companion from the list</h2>
+<ul>
+<li>Amelia</li>
+<li>Donna</li>
+<li>Rose</li>
+<li>Martha</li>
+<li>Clara</li>
+</ul>
+
 <script>
-(function(){
-  var answer = Number.parseInt('18');
+(function() {
 
-  var guess = Number.parseInt(prompt('Can you guess how many cups of coffee per week it takes to keep me functional without getting jumpy? You have five chances.'));
-  console.log(guess);
-  var count = 0;
-  while(count < 5) {
+ var pick = Number.parseInt(prompt('Guess the Doctor Who companion in 3 guesses or less. Start by picking a number between 1 and 5'));
 
-    if (guess === answer){
-        alert('That\'s the perfect amount of coffee!');
-      break;
-    } else if(guess < answer){
+   function Game(companion, hair, job, end){
+   this.companion = companion;
+   this.hair = hair;
+   this.job = job;
+   this.end = end;
+   this.setAnswer = function(){
+    return String(this.companion).toLowerCase();
+   };
+}
 
-         guess = Number.parseInt(prompt(guess +"?! " + 'That\'s not enough coffee! Add more.'));
-         count = count + 1;
-    }else if(guess > answer){
-         guess = Number.parseInt(prompt(guess +  '?! That\'s way too much coffee. Saying that is just making me feel Jittery! Less is best.'));
-         count = count + 1;
-    }
-     else if (isNaN(guess)) {
-        guess = prompt('Try entering a number')
-     }
+var companions = []
+companions[0] = new Game('Donna', 'red', 'temp', 'most tragically' );
+
+companions[1] = new Game('Rose', 'blonde', 'shopgirl', 'happiest');
+
+companions[2] = new Game('Martha', 'black', 'doctor', 'amicably');
+
+companions[3] = new Game('Amelia', 'red', 'kissagram', 'in a graveyard. She blinked.')
+
+companions[4] = new Game('Clara', 'brown', 'teacher', 'in a way we don\'t know yet');
+
+if (pick === 5) {
+  answer1 = companions[4].setAnswer();
+}
+else if (pick === 4) {
+  answer1 = companions[3].setAnswer();
+}
+else if (pick === 3) {
+  answer1 = companions[2].setAnswer();
+}
+else if (pick === 2){
+  answer1 = companions[1].setAnswer();
+
+}
+else if (pick ===1 ) {
+  answer1 = companions[0].setAnswer();
+}
+
+var count = 2;
+position = pick - 1;
+var guess = prompt('Great! Now guess the companion\'s name').toLowerCase();
+
+while(count > 0){
 
 
+  if (guess === answer1){
+    alert('Congratulations! You\'re right. Try playing again and pick a different number.');
+    break;
   }
-if (count === 5){
-        alert("You used all your guesses! You lose.")
-      }
-})()
+  else if(count === 2 && guess !== answer1){
+    guess = prompt('Not quite, 2 more tries. The companion you\'re looking for has ' + companions[position].hair + ' hair').toLowerCase();
+    console.log(guess);
+    count = count - 1;
+  }
+
+  else if (count === 1 && guess !== answer1) {
+    guess = prompt('One last chance! The companion you\'re looking for worked as a ' + companions[position].job).toLowerCase();
+    console.log(guess);
+    count = count -1;
+  }
+}
+
+if (count === 0 && guess !== answer1)
+    alert('Sorry! No more tries. The companion we were looking for was ' + companions[position].companion + '. Her time with the doctor ended ' + companions[position].end)
+
+
+})();
 </script>
+</body>
+</html>
+
+The first version of the game was a guessing game where the user was asked to guess how many cups of coffee it took to keep me functional each week. This game was not a great candidate for some of the features I needed to add, so I started over from scratch.
+
+The new game is a guessing game of modern Doctor Who companions. There is an HTML list of names that serves as a word bank in case the user doesn't know their names.
+
+The game uses an array to create objects with the specified attributes.
+
+The user is first prompted for a number and the number determines the correct answer, so the answer can be one of 5 companions.
+
+The user then has 3 chances to guess the correct companion and is given a hint using an attribute of that compation for the second and third prompts.
+
+If the user does not correctly guess the answer, they are given the correct name and the manner in which their journey with the doctor ended.
