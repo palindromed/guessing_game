@@ -1,8 +1,6 @@
 <script>
 (function() {
-   var pick = Number.parseInt(prompt('Guess the Doctor Who companion in 3 guesses or less. Start by picking a number between 1 and 5'));
-
-     function Game(companion, hair, job, end){
+  function Game(companion, hair, job, end){
      this.companion = companion;
      this.hair = hair;
      this.job = job;
@@ -10,44 +8,35 @@
      this.setAnswer = function(){
      return String(this.companion).toLowerCase();
    };
-}
-  var companions = []
-  companions[0] = new Game('Donna', 'red', 'temp', 'most tragically' );
-  companions[1] = new Game('Rose', 'blonde', 'shopgirl', 'happiest');
-  companions[2] = new Game('Martha', 'black', 'doctor', 'amicably');
-  companions[3] = new Game('Amelia', 'red', 'kissagram', 'in a graveyard. She blinked.')
-  companions[4] = new Game('Clara', 'brown', 'teacher', 'in a way we don\'t know yet');
+  }
+    var companions = []
+    companions[0] = new Game('Donna', 'red', 'temp', 'most tragically' );
+    companions[1] = new Game('Rose', 'blonde', 'shopgirl', 'happiest');
+    companions[2] = new Game('Martha', 'black', 'doctor', 'amicably');
+    companions[3] = new Game('Amelia', 'red', 'kissagram', 'in a graveyard. She blinked.')
+    companions[4] = new Game('Clara', 'brown', 'teacher', 'in a way we don\'t know yet');
 
-    if (pick === 5) {
-      answer1 = companions[4].setAnswer();
-  } else if (pick === 4) {
-      answer1 = companions[3].setAnswer();
-  } else if (pick === 3) {
-      answer1 = companions[2].setAnswer();
-  } else if (pick === 2){
-      answer1 = companions[1].setAnswer();
-  } else if (pick ===1 ) {
-      answer1 = companions[0].setAnswer();
-}
-  var count = 2;
-  var position = pick - 1;
-  var guess = prompt('Great! Now guess the companion\'s name').toLowerCase();
-  while(count > 0){
-    if (guess === answer1){
+    var pick= Math.floor(Math.random() * 5);
+    var position = pick - 1;
+    answer1 = companions[position].setAnswer()
+    var count = 2;
+    var guess = prompt('Guess which companion I\'m thinking of.').toLowerCase();
+
+    while(count > 0){
+      if (guess === answer1){
       break;
-  } else if(count === 2 && guess !== answer1){
+    } else if(count === 2 && guess !== answer1){
       guess = prompt('Not quite, 2 more tries. The companion you\'re looking for has ' + companions[position].hair + ' hair').toLowerCase();
         count = count - 1;
-  } else if (count === 1 && guess !== answer1) {
-      guess = prompt('One last chance! The companion you\'re looking for worked as a ' + companions[position].job).toLowerCase();
-      console.log(guess);
-      count = count -1;
+    } else if (count === 1 && guess !== answer1) {
+        guess = prompt('One last chance! The companion you\'re looking for worked as a ' + companions[position].job).toLowerCase();
+        count = count -1;
     }
   };
-  if (guess === answer1){
-    alert('Congratulations! The companion was ' + companions[position].companion + '. Try playing again and pick a different number.');
-  } else if (count === 0 && guess !== answer1) {
-    alert('Sorry! No more tries. The companion we were looking for was ' + companions[position].companion + '. Her time with the doctor ended ' + companions[position].end)
-  }
+    if (guess === answer1){
+      alert('Congratulations! The companion was ' + companions[position].companion + '. Play again to guess a different companion.');
+    } else if (count === 0 && guess !== answer1) {
+      alert('Sorry! No more tries. The companion we were looking for was ' + companions[position].companion + '. Her time with the doctor ended ' + companions[position].end)
+    }
 })();
 </script>
