@@ -5,7 +5,7 @@
     var count = 2;
     var guess = prompt('Guess which companion I\'m thinking of.').toLowerCase();
 
-    function Game(companion, hair, job, end) {
+    function Game(companion, hair, job, end) { //nice use of the object constructor, but I would say game is a poor name for it.
       this.companion = companion;
       this.hair = hair;
       this.job = job;
@@ -15,7 +15,7 @@
      };
     }
 
-    var companions = []
+    var companions = [] //missing semicolon
     companions[0] = new Game('Donna', 'red', 'temp', 'most tragically' );
     companions[1] = new Game('Rose', 'blonde', 'shopgirl', 'happiest');
     companions[2] = new Game('Martha', 'black', 'doctor', 'amicably');
